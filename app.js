@@ -27,8 +27,6 @@ const app = Vue.createApp({
             const attackValue = getRandomValue(5, 12);
             this.monsterHealth -= attackValue;
             this.attackPlayer();
-
-
         },
         attackPlayer() {
             // damage should be between 8 to 15
@@ -40,6 +38,16 @@ const app = Vue.createApp({
             // damage should be between 10 to 25
             const attackValue = getRandomValue(10, 25);
             this.monsterHealth -= attackValue;
+            this.attackPlayer();
+        },
+        healPlayer() {
+            // heal should be between 8 to 15
+            const healValue = getRandomValue(8, 20);
+            if(this.playerHealth + healValue > 100){
+                this.playerHealth = 100;
+            } else {
+                this.playerHealth += healValue;
+            }
             this.attackPlayer();
         },
     }
